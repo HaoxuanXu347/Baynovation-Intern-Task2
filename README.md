@@ -7,3 +7,13 @@
 3. Design User Interface (UI): Create an intuitive and user-friendly UI. Pay attention to layout, color schemes, and interactive elements that enhance the overall user experience. Keep in mind that the dashboard should allow users to explore the data, filter results based on specific criteria (e.g., mortgage type, time period), and provide relevant insights. Consider options such as D3.js, GUI , etc.
 
 4. Document Your Process: Throughout the project, document the steps you take, including data source details, extraction methods employed, and any transformations or cleaning processes applied. This documentation will prove valuable for future reference and help streamline similar tasks in the future.
+
+
+jjvs2AqJQDTLUVFpyW9Zvw==QEwGPlAnuwjrwTla
+
+db_config = {
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'LeoXu511',
+    'database': 'Mortgage Rate',
+}
