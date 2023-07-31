@@ -9,11 +9,11 @@
 4. Document Your Process: Throughout the project, document the steps you take, including data source details, extraction methods employed, and any transformations or cleaning processes applied. This documentation will prove valuable for future reference and help streamline similar tasks in the future.
 
 
-jjvs2AqJQDTLUVFpyW9Zvw==QEwGPlAnuwjrwTla
+Source: https://fred.stlouisfed.org/categories/114
 
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'LeoXu511',
+    'password': '',
     'database': 'Mortgage Rate',
 }
