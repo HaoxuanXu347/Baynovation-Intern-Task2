@@ -33,6 +33,24 @@
     </style>
 </head>
 <body>
+
+    <button id="playButton" style="position: absolute; right: 30px; top: 25px; border-radius: 5px;">Play Song</button>
+    <script>
+        const playButton = document.getElementById('playButton');
+        const audio = new Audio('static/music.mp3'); 
+
+        playButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playButton.innerText = 'Pause Song';
+            } else {
+                audio.pause();
+                playButton.innerText = 'Play Song';
+            }
+        });
+    </script>
+    
+    <i class="fa-solid fa-play"></i>
     <img src="/static/logo.jpeg" alt="Baynovation Logo" 
     style="position: absolute; left: 30px; top: 25px; font-size: medium; border-radius: 100%;">
 
@@ -43,6 +61,7 @@
             <select id="search_option" name="search_option">
                 <option value="mortgage_rate30">30-Year Fixed Rate Mortgage</option>
                 <option value="mortgage_rate15">15-Year Fixed Rate Mortgage</option>
+                <option value="realtime">real_time data</option>
             </select>
             <br>
             <button type="submit" style="position: absolute; right: 15px; top:10px; font-size:medium; border-radius: 5px;">Search</button>

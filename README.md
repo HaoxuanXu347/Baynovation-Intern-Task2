@@ -17,3 +17,5 @@ db_config = {
     'password': '',
     'database': 'Mortgage Rate',
 }
+
+Your registered API key is: 66e31b592e4db5531a48c87f68841a89

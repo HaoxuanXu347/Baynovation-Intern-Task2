@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mortgage Rate Lookup</title>
+        <style>
+            body {
+                background-image: url("/static/background.jpg"); 
+                background-size: cover;
+                background-repeat: no-repeat; 
+            }
+        </style>
+    </head>
+<body>
+    <img src="/static/logo.jpeg" alt="Baynovation Logo" 
+    style="position: absolute; left: 30px; top: 25px; font-size: medium; border-radius: 100%;">
+
+    <h1 style="position: absolute; left: 400px; top: 45px; font-size:xx-large; color: whitesmoke;">
+        Real-time mortgage rate related data </h1>
+    <textarea style="position: absolute; left: 150px; top: 120px; ">
+    {{data}}
+    </textarea>
+    
+
+    
+
+    <form action="/" method="GET" style="position: absolute; right: 30px; top: 20px;">
+        <button type="submit" style="font-size:large; border-radius: 5px;  background-color: aqua;">Return</button>
+    </form>
+</body>
+</html>
+
