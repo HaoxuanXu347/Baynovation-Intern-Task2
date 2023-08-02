@@ -23,10 +23,20 @@ def home():
         elif search_option == "mortgage_rate15":
             return render_template("mortgage_rate15.html")
         elif search_option == "realtime":
-            response = requests.get("https://api.stlouisfed.org/fred/release?release_id=473&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
-            if response.status_code == 200:
-                realtime_data = response.json()
-                return render_template("realtime_data.html", data=realtime_data)
+            response  = requests.get("https://api.stlouisfed.org/fred/release?release_id=473&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
+            response1 = requests.get("https://api.stlouisfed.org/fred/series?series_id=OBMMIVA30YF&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
+            response2 = requests.get("https://api.stlouisfed.org/fred/series?series_id=OBMMIFHA30YF&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
+            response3 = requests.get("https://api.stlouisfed.org/fred/series?series_id=MORTGAGE30US&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
+            response4 = requests.get("https://api.stlouisfed.org/fred/series?series_id=MORTGAGE15US&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
+            if response.status_code == 200 and response1.status_code == 200 and response2.status_code == 200 and response3.status_code == 200 and response4.status_code == 200:
+                realtime_data  = response.json()
+                realtime_data1 = response1.json()
+                realtime_data2 = response2.json()
+                realtime_data3 = response3.json()
+                realtime_data4 = response4.json()
+
+                return render_template("realtime_data.html", data=realtime_data, data1=realtime_data1, 
+                                    data2=realtime_data2, data3=realtime_data3, data4=realtime_data4)
             else:
                 print(f"Failed to fetch data. Status Code: {response.status_code}")
 

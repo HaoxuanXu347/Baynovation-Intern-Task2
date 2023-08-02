@@ -6,24 +6,133 @@
         <title>Mortgage Rate Lookup</title>
         <style>
             body {
-                background-image: url("/static/background.jpg"); 
+                background-image: url("/static/realtime_Background.jpg"); 
                 background-size: cover;
                 background-repeat: no-repeat; 
+                height: 2500px;
             }
         </style>
     </head>
-<body>
+<body style="height: 2500px;">
     <img src="/static/logo.jpeg" alt="Baynovation Logo" 
     style="position: absolute; left: 30px; top: 25px; font-size: medium; border-radius: 100%;">
 
-    <h1 style="position: absolute; left: 400px; top: 45px; font-size:xx-large; color: whitesmoke;">
+    <h1 style="position: absolute; left: 440px; top: 30px; font-size:xx-large; color: black;">
         Real-time mortgage rate related data </h1>
-    <textarea style="position: absolute; left: 150px; top: 120px; ">
-    {{data}}
-    </textarea>
-    
 
-    
+    <div style="position: absolute; left: 350px; top: 120px;">
+        <h2>Real-Time Information</h2>
+
+        <hr>
+
+        <h2>Optimalblue</h2>
+        <ul>
+        {% for release in data['releases'] %}
+            <li>
+                <h3>{{ release['name'] }}</h3>
+                <p><strong>ID:</strong> {{ release['id'] }}</p>
+                <p><strong>Real-Time Start:</strong> {{ release['realtime_start'] }}</p>
+                <p><strong>Real-Time End:</strong> {{ release['realtime_end'] }}</p>
+                <p><strong>Press Release:</strong> {% if release['press_release'] %}Yes{% else %}No{% endif %}</p>
+                <p><strong>Link:</strong> <a href="{{ release['link'] }}">{{ release['link'] }}</a></p>
+                <p><strong>Notes:</strong> {{ release['notes'] }}</p>
+            </li>
+            <hr>
+        {% endfor %}
+        </ul>
+
+    {# ----------------------------------------------------------------------------- #}
+        <h2>30-Year Fixed Rate Veterans Affairs Mortgage Index</h2>
+        <ul>
+        {% for series in data1['seriess'] %}
+            <li>
+                <strong>Title:</strong> {{ series['title'] }}<br>
+                <strong>Observation Start:</strong> {{ series['observation_start'] }}<br>
+                <strong>Observation End:</strong> {{ series['observation_end'] }}<br>
+                <strong>Frequency:</strong> {{ series['frequency'] }}<br>
+                <strong>Units:</strong> {{ series['units'] }}<br>
+                <strong>Seasonal Adjustment:</strong> {{ series['seasonal_adjustment'] }}<br>
+                <strong>Last Updated:</strong> {{ series['last_updated'] }}<br>
+                <strong>Notes:</strong> {{ series['notes'] }}<br>
+                <strong>What is it:</strong>a 30-Year Fixed Rate Veterans Affairs (VA) mortgage is a type of home loan offered by private 
+                lenders to eligible veterans, active-duty service members, and surviving spouses. The VA loan program is administered by 
+                the U.S. Department of Veterans Affairs.
+            </li>
+        <p style="cursor: pointer; font-size: medium;">Source: <a href="https://www2.optimalblue.com/">Optimal Blue</a></p> 
+        <p style="cursor: pointer; font-size: medium;">Release: <a href="https://www2.optimalblue.com/obmmi/">Optimal Blue Mortgage Market Indices</a></p>
+        {% endfor %}
+        <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=17vkK&width=800&height=400" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
+        <hr>
+        </ul>
+
+    {# ----------------------------------------------------------------------------- #}
+        <h2>30-Year Fixed Rate FHA Mortgage Index</h2>
+        <ul>
+        {% for series in data2['seriess'] %}
+            <li>
+                <strong>Title:</strong> {{ series['title'] }}<br>
+                <strong>Observation Start:</strong> {{ series['observation_start'] }}<br>
+                <strong>Observation End:</strong> {{ series['observation_end'] }}<br>
+                <strong>Frequency:</strong> {{ series['frequency'] }}<br>
+                <strong>Units:</strong> {{ series['units'] }}<br>
+                <strong>Seasonal Adjustment:</strong> {{ series['seasonal_adjustment'] }}<br>
+                <strong>Last Updated:</strong> {{ series['last_updated'] }}<br>
+                <strong>Notes:</strong> {{ series['notes'] }}<br>
+                <strong>What is it</strong> A 30-Year Fixed Rate FHA Mortgage refers to a type of home loan offered by lenders in the United States that is insured by 
+                the Federal Housing Administration (FHA). This mortgage program is designed to make homeownership more accessible to first-time buyers and those with 
+                lower credit scores or limited down payment funds.
+            </li>
+        <p style="cursor: pointer; font-size: medium;">Source: <a href="https://www2.optimalblue.com/">Optimal Blue</a></p> 
+        <p style="cursor: pointer; font-size: medium;">Release: <a href="https://www2.optimalblue.com/obmmi/">Optimal Blue Mortgage Market Indices</a></p>
+        {% endfor %}
+        <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=17vl4&width=800&height=400" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
+        </ul>
+
+    {# ----------------------------------------------------------------------------- #}
+        <h2>30-Year Fixed Rate Mortgage Average in the United States</h2>
+        <ul>
+        {% for series in data3['seriess'] %}
+            <li>
+                <strong>Title:</strong> {{ series['title'] }}<br>
+                <strong>Observation Start:</strong> {{ series['observation_start'] }}<br>
+                <strong>Observation End:</strong> {{ series['observation_end'] }}<br>
+                <strong>Frequency:</strong> {{ series['frequency'] }}<br>
+                <strong>Units:</strong> {{ series['units'] }}<br>
+                <strong>Seasonal Adjustment:</strong> {{ series['seasonal_adjustment'] }}<br>
+                <strong>Last Updated:</strong> {{ series['last_updated'] }}<br>
+                <strong>Notes:</strong> {{ series['notes'] }}<br>
+            </li>
+            <p style="cursor: pointer; font-size: large;">Source: <a href="http://www.freddiemac.com/index.html">Freddie Mac</a></p> 
+            <p style="cursor: pointer; font-size: large;">Release: <a href="https://www.freddiemac.com/pmms">Primary Mortgage Market Survey</a></p>
+        {% endfor %}
+        <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=17qTy&width=800&height=400" scrolling="no" frameborder="0" style="overflow:hidden; width:600px; height:400px; border-radius: 8px;" allowTransparency="true" loading="lazy"></iframe>
+        <hr>
+        </ul>
+
+    {# ----------------------------------------------------------------------------- #}
+        <h2>15-Year Fixed Rate Mortgage Average in the United States </h2>
+        <ul>
+        {% for series in data4['seriess'] %}
+            <li>
+                <strong>Title:</strong> {{ series['title'] }}<br>
+                <strong>Observation Start:</strong> {{ series['observation_start'] }}<br>
+                <strong>Observation End:</strong> {{ series['observation_end'] }}<br>
+                <strong>Frequency:</strong> {{ series['frequency'] }}<br>
+                <strong>Units:</strong> {{ series['units'] }}<br>
+                <strong>Seasonal Adjustment:</strong> {{ series['seasonal_adjustment'] }}<br>
+                <strong>Last Updated:</strong> {{ series['last_updated'] }}<br>
+                <strong>Notes:</strong> {{ series['notes'] }}<br>
+            </li>
+            <p style="cursor: pointer; font-size: large;">Source: <a href="http://www.freddiemac.com/index.html">Freddie Mac</a></p> 
+            <p style="cursor: pointer; font-size: large;">Release: <a href="https://www.freddiemac.com/pmms">Primary Mortgage Market Survey</a></p>
+        {% endfor %}
+        <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=17qTy&width=600&height=400" scrolling="no" frameborder="0" style="overflow:hidden; width:600px; height:400px; border-radius: 8px;" allowTransparency="true" loading="lazy"></iframe>
+        <hr>
+        </ul>
+
+
+
+    </div>
 
     <form action="/" method="GET" style="position: absolute; right: 30px; top: 20px;">
         <button type="submit" style="font-size:large; border-radius: 5px;  background-color: aqua;">Return</button>
