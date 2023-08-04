@@ -9,64 +9,26 @@
             background-image: url("/static/background.jpg"); 
             background-size: cover;
             background-repeat: no-repeat; 
-        }
-        .search-form {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: x-large;
-        }
-        .search-form select, .search-form button {
-            margin: 10px;
-            padding: 5px;
-        }
-        .search-bar {
-            width: 450px; 
-            height: 50px;
-            padding: 10px;
-            font-size: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(30, 214, 85, 0.2);
-        }
+        }        
     </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-    <button id="playButton" style="position: absolute; right: 30px; top: 25px; border-radius: 5px;">Play Song</button>
-    <script>
-        const playButton = document.getElementById('playButton');
-        const audio = new Audio('static/music.mp3'); 
-
-        playButton.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                playButton.innerText = 'Pause Song';
-            } else {
-                audio.pause();
-                playButton.innerText = 'Play Song';
-            }
-        });
-    </script>
-    
-    <i class="fa-solid fa-play"></i>
     <img src="/static/logo.jpeg" alt="Baynovation Logo" 
-    style="position: absolute; left: 30px; top: 25px; font-size: medium; border-radius: 100%;">
+    style="position: absolute; left: 30px; top: 80px; font-size: small; border-radius: 100%;">
 
-    <h1 style="position: absolute; left: 505px; top: 45px; font-size:xx-large; color: whitesmoke;">Mortgage Rate Lookup Tool</h1>
-    <div class="search-form" style="position: absolute; left: 700px; top: 180px;">
-        <form class = "search-bar" action="/" method="POST">
-            <label for="search_option" style="font-style:italic;">Select an option:</label>
-            <select id="search_option" name="search_option">
-                <option value="mortgage_rate30">30-Year Fixed Rate Mortgage</option>
-                <option value="mortgage_rate15">15-Year Fixed Rate Mortgage</option>
-                <option value="realtime">real_time data</option>
-            </select>
-            <br>
-            <button type="submit" style="position: absolute; right: 15px; top:10px; font-size:medium; border-radius: 5px;">Search</button>
-        </form>
-    </div>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/mortgage_rate30">30-Year Mortgage Rates</a></li>
+            <li><a href="/mortgage_rate15">15-Year Mortgage Rates</a></li>
+            <li><a href="/realtime">Real-Time Data</a></li>
+            <li><a href="/Zillow_CurrentRate">Zillow Rates</a></li>
+        </ul>
+    </nav>
+    <h1 style="position: absolute; left: 505px; top: 70px; font-size:xx-large; color: whitesmoke;">Mortgage Rate Lookup Tool</h1>
+    
 
 </body>
 </html>

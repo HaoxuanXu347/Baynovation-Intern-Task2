@@ -18,4 +18,23 @@ db_config = {
     'database': 'Mortgage Rate',
 }
 
-Your registered API key is: 66e31b592e4db5531a48c87f68841a89
+FRED MAC registered API key is: 66e31b592e4db5531a48c87f68841a89
+
+Zillow Partner ID: RD-QVHNTHG
+
+
+<button id="playButton" style="position: absolute; right: 30px; top: 25px; border-radius: 5px;">Play Song</button>
+    <script>
+        const playButton = document.getElementById('playButton');
+        const audio = new Audio('static/music.mp3'); 
+
+        playButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playButton.innerText = 'Pause Song';
+            } else {
+                audio.pause();
+                playButton.innerText = 'Play Song';
+            }
+        });
+    </script>

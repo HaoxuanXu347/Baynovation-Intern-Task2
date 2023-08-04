@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zillow Current Mortgage Rate Lookup</title>
+        <style>
+            body {
+                background-color: rgb(165, 231, 209);
+                background-size: cover;
+                background-repeat: no-repeat; 
+                height: 100%;
+            }
+        </style>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/mortgage_rate30">30-Year Mortgage Rates</a></li>
+            <li><a href="/mortgage_rate15">15-Year Mortgage Rates</a></li>
+            <li><a href="/realtime">Real-Time Data</a></li>
+            <li><a href="/Zillow">Zillow Rates</a></li>
+            <li><a href="/" style="position: absolute; right: 30px; top: 9px; font-size:medium;">Return</a></li>
+            
+        </ul>
+    </nav>
+
+    <h1 style="position: absolute; left: 50px; top: 100px;">Zillow Current Mortgage Rate Calculator</h1>
+
+    <form style="position: absolute; left: 50px; top: 300px;" method="POST" action="/Zillow_CurrentRate">
+        <div class="form-group">
+            <label for="stateAbbreviation">State Abbreviation:</label>
+            <input type="text" id="stateAbbreviation" name="stateAbbreviation" required>
+        </div>
+        <div class="form-group">
+            <label for="propertyValue">Property Value:</label>
+            <input type="number" id="propertyValue" name="propertyValue" required>
+        </div>
+        <div class="form-group">
+            <label for="loanAmount">Loan Amount:</label>
+            <input type="number" id="loanAmount" name="loanAmount" required>
+        </div>
+        <br>
+        <input type="submit" value="Calculate Rates">
+    </form>
+    
+    <div style="position: absolute; left: 50px; top: 500px;">
+        <!-- Display API response data in a table -->
+<table style="position: absolute; left: 50px; top: 500px; border-collapse: collapse; border: 1px solid black;">
+    <tr style="border: 1px solid black;">
+        <th style="border: 1px solid black; padding: 8px;">Field</th>
+        <th style="border: 1px solid black; padding: 8px;">Value</th>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td style="border: 1px solid black; padding: 8px;"><strong>APR</strong></td>
+        <td style="border: 1px solid black; padding: 8px;">
+            {% if zillow_data %}
+                {{ zillow_data['rates']['1']['apr'] }}
+            {% else %}
+                N/A
+            {% endif %}
+        </td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td style="border: 1px solid black; padding: 8px;"><strong>Rate</strong></td>
+        <td style="border: 1px solid black; padding: 8px;">
+            {% if zillow_data %}
+                {{ zillow_data['rates']['1']['rate'] }}
+            {% else %}
+                N/A
+            {% endif %}
+        </td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td style="border: 1px solid black; padding: 8px;"><strong>Credit Score Bucket</strong></td>
+        <td style="border: 1px solid black; padding: 8px;">
+            {% if zillow_data %}
+                {{ zillow_data['rates']['1']['query']['creditScoreBucket'] }}
+            {% else %}
+                N/A
+            {% endif %}
+        </td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td style="border: 1px solid black; padding: 8px;"><strong>Loan Amount Bucket</strong></td>
+        <td style="border: 1px solid black; padding: 8px;">
+            {% if zillow_data %}
+                {{ zillow_data['rates']['1']['query']['loanAmountBucket'] }}
+            {% else %}
+                N/A
+            {% endif %}
+        </td>
+    </tr>
+    <!-- ... add more fields here ... -->
+</table>
+
+    </div>
+   
+    <p style="cursor: pointer; font-size: medium;">Source: <a href="https://www.zillow.com/mortgage/api/#/current-rates-example">Zillow API</a></p> 
+           
+
+
+</body>
+
+
+
+</html>

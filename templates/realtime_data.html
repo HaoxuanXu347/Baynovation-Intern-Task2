@@ -6,12 +6,13 @@
         <title>Mortgage Rate Lookup</title>
         <style>
             body {
-                background-image: url("/static/realtime_Background.jpg"); 
+                background-color: rgb(165, 231, 209);
                 background-size: cover;
                 background-repeat: no-repeat; 
-                height: 2500px;
+                height: 100%;
             }
         </style>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
 <body style="height: 2500px;">
     <img src="/static/logo.jpeg" alt="Baynovation Logo" 
@@ -102,8 +103,8 @@
                 <strong>Last Updated:</strong> {{ series['last_updated'] }}<br>
                 <strong>Notes:</strong> {{ series['notes'] }}<br>
             </li>
-            <p style="cursor: pointer; font-size: large;">Source: <a href="http://www.freddiemac.com/index.html">Freddie Mac</a></p> 
-            <p style="cursor: pointer; font-size: large;">Release: <a href="https://www.freddiemac.com/pmms">Primary Mortgage Market Survey</a></p>
+        <p style="cursor: pointer; font-size: large;">Source: <a href="http://www.freddiemac.com/index.html">Freddie Mac</a></p> 
+        <p style="cursor: pointer; font-size: large;">Release: <a href="https://www.freddiemac.com/pmms">Primary Mortgage Market Survey</a></p>
         {% endfor %}
         <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=17qTy&width=800&height=400" scrolling="no" frameborder="0" style="overflow:hidden; width:600px; height:400px; border-radius: 8px;" allowTransparency="true" loading="lazy"></iframe>
         <hr>
@@ -123,8 +124,8 @@
                 <strong>Last Updated:</strong> {{ series['last_updated'] }}<br>
                 <strong>Notes:</strong> {{ series['notes'] }}<br>
             </li>
-            <p style="cursor: pointer; font-size: large;">Source: <a href="http://www.freddiemac.com/index.html">Freddie Mac</a></p> 
-            <p style="cursor: pointer; font-size: large;">Release: <a href="https://www.freddiemac.com/pmms">Primary Mortgage Market Survey</a></p>
+        <p style="cursor: pointer; font-size: large;">Source: <a href="http://www.freddiemac.com/index.html">Freddie Mac</a></p> 
+        <p style="cursor: pointer; font-size: large;">Release: <a href="https://www.freddiemac.com/pmms">Primary Mortgage Market Survey</a></p>
         {% endfor %}
         <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=17qTy&width=600&height=400" scrolling="no" frameborder="0" style="overflow:hidden; width:600px; height:400px; border-radius: 8px;" allowTransparency="true" loading="lazy"></iframe>
         <hr>

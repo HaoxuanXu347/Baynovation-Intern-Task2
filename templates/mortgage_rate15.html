@@ -11,12 +11,20 @@
                 background-repeat: no-repeat; 
             }
         </style>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
 <body>
-    <img src="/static/logo.jpeg" alt="Baynovation Logo" 
-    style="position: absolute; left: 30px; top: 25px; font-size: medium; border-radius: 100%;">
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/mortgage_rate30">30-Year Mortgage Rates</a></li>
+            <li><a href="/mortgage_rate15">15-Year Mortgage Rates</a></li>
+            <li><a href="/realtime">Real-Time Data</a></li>
+            <li><a href="/Zillow">Zillow Rates</a></li>
+        </ul>
+    </nav>
     
-    <h1 style="position: absolute; left: 400px; top: 45px; font-size:xx-large; color: whitesmoke;">
+    <h1 style="position: absolute; left: 350px; top: 80px; font-size:xx-large; color: whitesmoke;">
         15-Year Fixed Rate Mortgage Average in the United States </h1>
     <div style="position: absolute; left: 400px; top: 150px; font-size: x-large;">
     <form action="/mortgage_rate15" method="POST">
@@ -83,7 +91,7 @@
     </iframe>
     </div>
 
-    <div style="position: absolute; left: 700px; top: 130px; font-size: large;">
+    <div style="position: absolute; left: 750px; top: 171px; font-size: large;">
     {% if mortgage_rate15 %}
     <h2 style="color:aquamarine">Selected 15-Year Fixed Rate Mortgage :</h2>
     <p style="font-size: large;">Year: {{ selected_year }}</p>
@@ -93,9 +101,6 @@
     {% endif %}
     </div>  
 
-    <form action="/" method="GET" style="position: absolute; right: 30px; top: 20px;">
-        <button type="submit" style="font-size:large; border-radius: 5px; background-color: aqua;">Return</button>
-    </form>
 </body>
 </html>
 
