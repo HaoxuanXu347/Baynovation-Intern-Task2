@@ -13,30 +13,36 @@ db = mysql.connector.connect(
 )
 
 cursor = db.cursor()
-
+cursor1 = db.cursor()
+#--------------------------------Home Page---------------------------------------
 @app.route("/")
-def home():
-    if request.method == "POST":
-            response  = requests.get("https://api.stlouisfed.org/fred/release?release_id=473&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
-            response1 = requests.get("https://api.stlouisfed.org/fred/series?series_id=OBMMIVA30YF&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
-            response2 = requests.get("https://api.stlouisfed.org/fred/series?series_id=OBMMIFHA30YF&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
-            response3 = requests.get("https://api.stlouisfed.org/fred/series?series_id=MORTGAGE30US&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
-            response4 = requests.get("https://api.stlouisfed.org/fred/series?series_id=MORTGAGE15US&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
-            if response.status_code == 200 and response1.status_code == 200 and response2.status_code == 200 and response3.status_code == 200 and response4.status_code == 200:
-                realtime_data  = response.json()
-                realtime_data1 = response1.json()
-                realtime_data2 = response2.json()
-                realtime_data3 = response3.json()
-                realtime_data4 = response4.json()
-
-                return render_template("realtime_data.html", data=realtime_data, data1=realtime_data1, 
-                                    data2=realtime_data2, data3=realtime_data3, data4=realtime_data4)
-        
-            
+def home():        
     return render_template("index.html")
 
 
-#-------------------------Zillow Current Mortgage Rate-----------------------
+#-------------------------Fred Mac Real-Time Mortgage Rate-----------------------
+@app.route('/realtime_data', methods=["GET", "POST"])
+def fred_realtime():
+    
+    response  = requests.get("https://api.stlouisfed.org/fred/release?release_id=473&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
+    response1 = requests.get("https://api.stlouisfed.org/fred/series?series_id=OBMMIVA30YF&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
+    response2 = requests.get("https://api.stlouisfed.org/fred/series?series_id=OBMMIFHA30YF&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
+    response3 = requests.get("https://api.stlouisfed.org/fred/series?series_id=MORTGAGE30US&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
+    response4 = requests.get("https://api.stlouisfed.org/fred/series?series_id=MORTGAGE15US&realtime_end=9999-12-31&api_key=66e31b592e4db5531a48c87f68841a89&file_type=json")
+
+    if response.status_code == 200 and response1.status_code == 200 and response2.status_code == 200 and response3.status_code == 200 and response4.status_code == 200:
+        realtime_data  = response.json()
+        realtime_data1 = response1.json()
+        realtime_data2 = response2.json()
+        realtime_data3 = response3.json()
+        realtime_data4 = response4.json()
+        return render_template("realtime_data.html", data=realtime_data, data1=realtime_data1, 
+                                    data2=realtime_data2, data3=realtime_data3, data4=realtime_data4)
+
+    return render_template("realtime_data.html")
+
+
+#-------------------------Zillow Current Mortgage Rate---------------------------
 @app.route('/Zillow_CurrentRate', methods=["GET", "POST"])
 def zillow_rates():
     if request.method == 'POST':
@@ -79,12 +85,16 @@ def get_mortgage_rate15(selected_date):
     selected_date = f"{year}-{month}-01"  # Add the day "01" for the first day of the selected month
     query = "SELECT `Rate-15-US` FROM `Mortgage_Rate15` WHERE `Date` <= %s ORDER BY `Date` DESC LIMIT 1"
     cursor.execute(query, (selected_date,))
-    mortgage_rate15 = cursor.fetchone()
+    mortgage_rate15 = cursor1.fetchone()
     return render_template("mortgage_rate15.html", selected_year=year, selected_month=month, mortgage_rate15=mortgage_rate15)
 
 @app.route("/mortgage_rate15")
 def mortgage_rate15_lookup():
    return render_template("mortgage_rate15.html")
+
+@app.route("/intro")
+def mortgage_intro():
+   return render_template("intro.html")
     
 if __name__ == "__main__":
     app.run(debug=True)

@@ -6,27 +6,35 @@
         <title>Mortgage Rate Lookup</title>
         <style>
             body {
-                background-image: url("/static/background.jpg"); 
+                background-color: white;
                 background-size: cover;
                 background-repeat: no-repeat; 
             }
+            a:hover {
+                background-color: rgb(70, 157, 227);
+            }
         </style>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/mortgage_rate30">30-Year Mortgage Rates</a></li>
-            <li><a href="/mortgage_rate15">15-Year Mortgage Rates</a></li>
-            <li><a href="/realtime">Real-Time Data</a></li>
-            <li><a href="/Zillow">Zillow Rates</a></li>
-        </ul>
-    </nav>
+<body style="height: 800px;">
+    
+    <nav style="background-color: rgb(46, 143, 217);
+            position:absolute;
+            top:0px; left:0px; 
+            height: 70px; width: 1600px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; /* Remove underlines from links */padding: 10px;" href="/">Home</a>
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; /* Remove underlines from links */padding: 10px;" href ="/mortgage_rate30">30-Year Mortgage Rates</a>
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; /* Remove underlines from links */padding: 10px;" href="/mortgage_rate15">15-Year Mortgage Rates</a>
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; /* Remove underlines from links */padding: 10px;" href="/realtime_data">Real-Time Data</a>
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; /* Remove underlines from links */padding: 10px;" href="/Zillow_CurrentRate">Zillow Rates</a>
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; padding: 10px;" href="/intro">What's Mortgage</a>        
+</nav>
 
-    <h1 style="position: absolute; left: 350px; top: 80px; font-size:xx-large; color: whitesmoke;">
+
+    <h1 style="position: absolute; left: 100px; top: 80px; font-size:xx-large; color: black;">
         30-Year Fixed Rate Mortgage Average in the United States </h1>
-    <div style="position: absolute; left: 400px; top: 150px; font-size: x-large;">
+    <div style="position: absolute; left: 750px; top: 150px; font-size: x-large;">
     <form action="/mortgage_rate30" method="POST">
         <label for="year">Select a year:</label>
         <select id="year" name="year" style="font-size: large; border-radius: 5px;">
@@ -104,21 +112,27 @@
         <input type="submit" value="Get Mortgage Rate" style="font-size: large; border-radius: 5px;">
     </form></div>
 
-    <div style="position: absolute; left: 100px; top: 270px; border-radius: 5px;">
-    <p style="cursor: pointer; font-size: large;">Source: <a href="http://www.freddiemac.com/index.html">Freddie Mac</a></p> 
-    <p style="cursor: pointer; font-size: large;">Release: <a href="https://www.freddiemac.com/pmms">Primary Mortgage Market Survey</a></p>
-    <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=17qTy&width=600&height=400" scrolling="no" frameborder="0" style="overflow:hidden; width:600px; height:400px; border-radius: 8px;" allowTransparency="true" loading="lazy">
-    </iframe>
-    </div>
-
-    <div style="position: absolute; left: 750px; top: 171px; font-size: large;">
+    <div style="position: absolute; left: 750px; top: 250px; font-size: large;">
     {% if mortgage_rate30 %}
-    <h2 style="color:aquamarine">Selected 30-Year Fixed Rate Mortgage :</h2>
+    <h2 style="color:white">Selected 30-Year Fixed Rate Mortgage :</h2>
     <p style="font-size: large;">Year: {{ selected_year }}</p>
     <p style="font-size: large;">Month: {{ selected_month }}</p>
     <p style="font-size: large;">Mortgage Rate: {{ mortgage_rate30 }}</p>
     <iframe src="https://giphy.com/embed/ViZylgfPSfJFm" width="480" height="240" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/messi-ViZylgfPSfJFm">via GIPHY</a></p>
     {% endif %}
+    </div>
+
+    <div style="position: absolute; left: 100px; top: 150px; border-radius: 5px;">
+        <p style="cursor: pointer; font-size: large;"><a href="http://www.freddiemac.com/index.html">Freddie Mac</a></p> 
+        <p style="cursor: pointer; font-size: large;"><a href="https://www.freddiemac.com/pmms">Primary Mortgage Market Survey</a></p>
+        <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=17qTy&width=600&height=450" scrolling="no" frameborder="0" style="overflow:hidden; width:600px; height:400px; border-radius: 8px;" allowTransparency="true" loading="lazy">
+        </iframe>
+    </div>
+
+    <div style="position: absolute; left: 100px; bottom: 30px; font-size: large; font-weight: bold;">
+        Baynovation<br>
+        Info@baynovation.com<br>
+        San Jose, CA 95134
     </div>
 
 </body>

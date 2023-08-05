@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mortgage Rate Lookup</title>
+        <style>
+            body {
+                background-color: rgb(165, 231, 209);
+                background-size: cover;
+                background-repeat: no-repeat; 
+            }
+            a:hover {
+                background-color: rgb(70, 157, 227);
+            }
+
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            flex: 1;
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        </style>
+    </head>
+<body style="height: 2000px;">
+    
+    <nav style="background-color: rgb(46, 143, 217);
+            position:absolute;
+            top:0px; left:0px; 
+            height: 70px; width: 1600px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; padding: 10px;" href="/">Home</a>
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; padding: 10px;" href ="/mortgage_rate30">30-Year Mortgage Rates</a>
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; padding: 10px;" href="/mortgage_rate15">15-Year Mortgage Rates</a>
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; padding: 10px;" href="/realtime_data">Real-Time Data</a>
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; padding: 10px;" href="/Zillow_CurrentRate">Zillow Rates</a>
+    <a style="position: relative;top: 25px;font-size: large;font-weight: bold;color: rgb(2, 2, 2);text-decoration: none; padding: 10px;" href="/intro">What's Mortgage</a>    
+    </nav>
+
+    
+    <div class="container">
+        <h2>Fixed-Rate Mortgage</h2>
+        <p>A fixed-rate mortgage is a type of mortgage where the interest rate remains constant for the entire term of the loan. This provides borrowers with predictable monthly payments over the life of the loan.</p>
+        
+        <h2>Adjustable-Rate Mortgage (ARM)</h2>
+        <p>An adjustable-rate mortgage, or ARM, has an interest rate that can change periodically. Typically, an ARM starts with a lower initial rate that adjusts after a set period. Borrowers should be aware of potential rate fluctuations.</p>
+        
+        <h2>Interest-Only Mortgage</h2>
+        <p>With an interest-only mortgage, borrowers only pay the interest on the loan for a specific period. After that, they start paying both principal and interest. It can offer lower initial payments but may result in a larger final payment.</p>
+        
+        <h2>Federal Housing Administration (FHA) Loan</h2>
+        <p>An FHA loan is a government-backed mortgage insured by the Federal Housing Administration. It is designed to help low-to-moderate-income borrowers with lower down payments and more lenient credit requirements.</p>
+        
+        <h2>Veterans Affairs (VA) Loan</h2>
+        <p>VA loans are available to eligible veterans, active-duty service members, and some members of the National Guard and Reserves. These loans typically require no down payment and offer favorable terms.</p>
+        
+        <h2>Jumbo Loan</h2>
+        <p>A jumbo loan is a type of mortgage that exceeds the conforming loan limits set by government agencies. They are often used for high-priced properties and may have stricter qualification requirements.</p>
+    </div>
+
+    <video style="position:absolute; right:50px; top:100px;" controls width="700">
+        <source src="{{ url_for('static', filename='IntroVideo.mp4') }}" type="video/mp4">
+    </video>
+    <p style="position:absolute; right:50px; top:530px;">Youtube Link <a href="https://youtu.be/CBIJwb37O_4">here</a>.</p>
+
+</body>
+</html>
+

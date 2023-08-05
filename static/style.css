@@ -12,15 +12,12 @@ label {
     font-weight: bold;
 }
   
-br {
-    line-height: 20px;
-  }
   
 nav {
     position: absolute;
     top: 0px;
     left:0px;
-    background-color: rgb(46, 143, 217); /* Set the background color for the navigation bar */
+    background-color: rgb(46, 143, 217); 
     width: 1600px;
     height: 70px;
     border-radius: 5px;
@@ -49,6 +46,17 @@ a {
 a:hover {
     background-color: aqua; /* Change the background color of links on hover */
     border-radius: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin: 50px auto;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
 }
 
 
