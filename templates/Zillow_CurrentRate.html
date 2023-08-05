@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Zillow Current Mortgage Rate Lookup</title>
-        <style>
-            body {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zillow Current Mortgage Rate Lookup</title>
+    <style>
+        body {
                 background-color:white;
                 background-size: cover;
                 background-repeat: no-repeat; 
                 height: 100%;
-            }
-        </style>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    </head>
+        }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 </head>
 <body>
     <nav>
@@ -25,8 +24,6 @@
             <li style="margin-top: 40px;"><a href="/realtime_data">Real-Time Data</a></li>
             <li style="margin-top: 40px;"><a href="/Zillow_CurrentRate">Zillow Rates</a></li>
             <li style="margin-top: 40px;"><a href="/intro">What's Mortgage</a></li>
-            <li style="margin-top: 40px;"><a href="/" style="position: absolute; right: 30px; top: 9px; font-size:medium;">Return</a></li>
-            
         </ul>
     </nav>
 
@@ -48,6 +45,8 @@
         <br>
         <input type="submit" value="Calculate Rates">
     </form>
+
+
     <table style="position: absolute; left: 470px; top: 180px; border-collapse: collapse; border: 1px solid black;">
     <tr style="border: 1px solid black;">
         <th style="border: 1px solid black; padding: 8px;">Field</th>

@@ -13,7 +13,6 @@ db = mysql.connector.connect(
 )
 
 cursor = db.cursor()
-cursor1 = db.cursor()
 #--------------------------------Home Page---------------------------------------
 @app.route("/")
 def home():        
@@ -85,13 +84,14 @@ def get_mortgage_rate15(selected_date):
     selected_date = f"{year}-{month}-01"  # Add the day "01" for the first day of the selected month
     query = "SELECT `Rate-15-US` FROM `Mortgage_Rate15` WHERE `Date` <= %s ORDER BY `Date` DESC LIMIT 1"
     cursor.execute(query, (selected_date,))
-    mortgage_rate15 = cursor1.fetchone()
+    mortgage_rate15 = cursor.fetchone()
     return render_template("mortgage_rate15.html", selected_year=year, selected_month=month, mortgage_rate15=mortgage_rate15)
 
 @app.route("/mortgage_rate15")
 def mortgage_rate15_lookup():
    return render_template("mortgage_rate15.html")
 
+#-------------------------Introduction about Mortgage-----------------------
 @app.route("/intro")
 def mortgage_intro():
    return render_template("intro.html")
